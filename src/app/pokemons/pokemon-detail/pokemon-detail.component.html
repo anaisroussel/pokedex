@@ -1,0 +1,27 @@
+<mat-card>
+<mat-grid-list cols='2' *ngIf='pokemon' rowHeight = "150px">
+    <mat-grid-tile [colspan] = "1" [rowspan] = "2">
+        <div><img src='../../assets/img/official-artwork/{{pokemon.id}}.png'></div>
+        <div class="numero">No. {{pokemon.id | number:'3.0'}}</div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan] = "1" [rowspan] = "2">
+        <mat-list>
+            <mat-list-item>{{pokemon.name}}&nbsp; 
+                <audio autoplay='true'><source src='../../assets/audio/{{pokemon.id}}.mp3'></audio>
+                <mat-icon class='audioPlay' (click)='playAudio(pokemon.id)'>play_circle_outline</mat-icon>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-chip-list *ngFor='let type of pokemon.types'>
+                    <mat-chip>{{type}}</mat-chip>&nbsp; 
+                </mat-chip-list>
+            </mat-list-item>
+            <mat-list-item>Taille: {{pokemon.height | number:'1.1'}} m</mat-list-item>
+            <mat-list-item>Poids: {{pokemon.weight | number:'1.1'}} kg</mat-list-item>
+        </mat-list>
+    </mat-grid-tile>
+    <mat-grid-tile class='description' [colspan] = "2" [rowspan] = "1">
+        {{pokemon.description}}
+    </mat-grid-tile>
+</mat-grid-list>
+</mat-card>
+<button mat-button (click)='goBack()'>&#8592;</button>
