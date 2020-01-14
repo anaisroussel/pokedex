@@ -1,7 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Pipe } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { PagedData } from 'src/app/models/paged-data.model';
 import { Pokemon } from 'src/app/models/pokemon.model';
+import { FilterPipe }from '../filter.pipe'
 
 @Component({
   selector: 'app-pokemon-list',
@@ -11,7 +12,7 @@ import { Pokemon } from 'src/app/models/pokemon.model';
 export class PokemonListComponent implements OnInit{
 
   @Output() selectedPokemon  = new EventEmitter<number>();
-
+  
   pagedData: PagedData<Pokemon>;
   limit = 0;
 

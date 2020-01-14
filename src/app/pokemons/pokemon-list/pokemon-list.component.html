@@ -1,6 +1,9 @@
+<mat-form-field style="width: 100%">
+    <input matInput [(ngModel)]="searchText" placeholder="Search a Pokemon">
+</mat-form-field>
 <ng-container *ngIf='pagedData'>
     <mat-list infiniteScroll (scrolled)='onScroll()' [scrollWindow]='false'>
-    <mat-list-item  class= 'pokemonItem' *ngFor = 'let pokemon of pagedData.data' (click)='onClick(pokemon.id)'>
+    <mat-list-item  class= 'pokemonItem' *ngFor = "let pokemon of pagedData.data | filter : searchText" (click)='onClick(pokemon.id)'>
         <img class='pokemonImage' src='../../assets/img/sprites/{{pokemon.id}}.png'>{{pokemon.id}}. {{pokemon.name}}</mat-list-item>
     </mat-list>
 </ng-container>
