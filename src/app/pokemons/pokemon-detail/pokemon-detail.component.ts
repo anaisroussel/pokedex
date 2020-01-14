@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonService } from '../pokemon.service';
 import { Pokemon } from 'src/app/models/pokemon.model';
@@ -11,17 +11,22 @@ import { Location } from '@angular/common';
 })
 export class PokemonDetailComponent implements OnInit {
 
-  @Input() pokemon: Pokemon;
+  @Input('id') id: number;
+  pokemon : Pokemon;
   
   constructor(private route: ActivatedRoute, private location: Location, private pokemonService: PokemonService) { }
 
   ngOnInit() {
-    this.getHero();
   }
 
-  getHero() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.pokemonService.getPokemon(id).subscribe(myPokemon => this.pokemon = myPokemon);
+  ngOnChanges() {
+    this.getPokemon();
+    this.playAudio();
+  }
+
+  getPokemon() {
+    // const id = +this.route.snapshot.paramMap.get('id');
+    this.pokemonService.getPokemon(this.id).subscribe(myPokemon => this.pokemon = myPokemon);
   }
 
   goBack() {
@@ -29,8 +34,8 @@ export class PokemonDetailComponent implements OnInit {
   }
 
   playAudio() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.pokemonService.playAudio(id);
+    // const id = +this.route.snapshot.paramMap.get('id');
+    this.pokemonService.playAudio(this.id);
   }
 
 }

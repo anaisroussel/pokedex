@@ -1,7 +1,6 @@
-<h2>Liste des Pokemons</h2>
 <ng-container *ngIf='pagedData'>
-    <mat-list infiniteScroll (scrolled)='onScroll()'>
-    <mat-list-item  class= 'pokemonItem' *ngFor = 'let pokemon of pagedData.data' routerLink='/pokemon/{{pokemon.id}}'>
+    <mat-list infiniteScroll (scrolled)='onScroll()' [scrollWindow]='false'>
+    <mat-list-item  class= 'pokemonItem' *ngFor = 'let pokemon of pagedData.data' (click)='onClick(pokemon.id)'>
         <img class='pokemonImage' src='../../assets/img/sprites/{{pokemon.id}}.png'>{{pokemon.id}}. {{pokemon.name}}</mat-list-item>
     </mat-list>
 </ng-container>

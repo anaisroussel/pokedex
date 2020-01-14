@@ -8,6 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { PokemonsModule } from './pokemons/pokemons.module';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
+import { PokedexComponent } from './pokedex/pokedex.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { RouterModule } from '@angular/router';
     PokemonsModule,
     HttpClientModule,
     MatListModule,
+    MatSidenavModule,
     RouterModule,
     BrowserAnimationsModule
   ],

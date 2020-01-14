@@ -1,8 +1,12 @@
 .pokemonItem:hover {
     background-color: #949494;
-    height: 100%;
 }
 
 .pokemonImage {
     height: 100%;
+}
+
+mat-list {
+    height: calc(100% - 8px);
+    overflow: auto;
 }

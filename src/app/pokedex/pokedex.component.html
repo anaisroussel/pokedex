@@ -1,0 +1,8 @@
+<mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" opened>
+        <app-pokemon-list (selectedPokemon)='fetchId($event)' ></app-pokemon-list>
+    </mat-sidenav>
+    <mat-sidenav-content *ngIf='id'>
+        <app-pokemon-detail [id]='id'></app-pokemon-detail>
+    </mat-sidenav-content>
+</mat-sidenav-container>

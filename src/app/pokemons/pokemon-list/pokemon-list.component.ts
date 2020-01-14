@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { PagedData } from 'src/app/models/paged-data.model';
 import { Pokemon } from 'src/app/models/pokemon.model';
@@ -9,6 +9,8 @@ import { Pokemon } from 'src/app/models/pokemon.model';
   styleUrls: ['./pokemon-list.component.scss']
 })
 export class PokemonListComponent implements OnInit{
+
+  @Output() selectedPokemon  = new EventEmitter<number>();
 
   pagedData: PagedData<Pokemon>;
   limit = 0;
@@ -21,13 +23,17 @@ export class PokemonListComponent implements OnInit{
   }
 
   getPokemons() {
-    this.pokemonService.getPokemons(10, 0).subscribe(pagedData => this.pagedData = pagedData);
-    this.limit +=10;
+    this.pokemonService.getPokemons(15, 0).subscribe(pagedData => this.pagedData = pagedData);
+    this.limit +=15;
   }
 
   onScroll() {
     this.limit +=10;
     this.pokemonService.getPokemons(this.limit, 0).subscribe(pagedData => this.pagedData = pagedData);
+  }
+
+  onClick(id : number) {
+    this.selectedPokemon.emit(id);
   }
 
 }
