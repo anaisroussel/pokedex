@@ -2,7 +2,6 @@ import { Component, OnInit, Output, EventEmitter, Pipe } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { PagedData } from 'src/app/models/paged-data.model';
 import { Pokemon } from 'src/app/models/pokemon.model';
-import { FilterPipe }from '../filter.pipe'
 
 @Component({
   selector: 'app-pokemon-list',
@@ -35,6 +34,11 @@ export class PokemonListComponent implements OnInit{
 
   onClick(id : number) {
     this.selectedPokemon.emit(id);
+  }
+
+  searchInput(value: string) {
+    console.log(value);
+    this.pokemonService.search(value).subscribe(pagedData => this.pagedData = pagedData);
   }
 
 }

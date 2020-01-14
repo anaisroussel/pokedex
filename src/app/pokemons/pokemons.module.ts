@@ -13,12 +13,12 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { PokedexComponent } from '../pokedex/pokedex.component';
 import {MatInputModule} from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
-import { FilterPipe } from './filter.pipe';
+import { MatFormFieldModule } from '@angular/material/';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [PokemonListComponent, PokemonDetailComponent, PokedexComponent, FilterPipe],
+  declarations: [PokemonListComponent, PokemonDetailComponent, PokedexComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -30,7 +30,8 @@ import { FilterPipe } from './filter.pipe';
     InfiniteScrollModule,
     MatSidenavModule,
     MatInputModule,
-    FormsModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
     MatButtonModule
   ],
   exports : [

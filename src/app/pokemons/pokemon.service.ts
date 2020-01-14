@@ -32,6 +32,15 @@ export class PokemonService {
       )));;
   }
 
+  search(value:string) : Observable<PagedData<Pokemon>>{
+    const url = pokemonsUrl+'?search='+value;
+    return this.client.get<PagedData<Pokemon>>(url).pipe( 
+      tap(_ => console.log(`serach =${value}`)),
+      catchError(this.handleError<PagedData<Pokemon>>('search'
+      )));;
+
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
   
